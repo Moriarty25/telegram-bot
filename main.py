@@ -662,7 +662,7 @@ schedule = {
             },
             {
                 "time": TIME__LESSONS[5],
-               "lesson": LESSONS["BioFizika"],
+               "lesson": LESSONS["Bio_fizika"],
             },
             {
                 "time": TIME__LESSONS[6],

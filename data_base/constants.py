@@ -36,7 +36,6 @@ lessons = {
     "Geometry": "Геометрия",
     "Geography": "География",
     "Technology": "Технология",
-    "BioFizika": "БиоФизика",
     "PrChem": "Пр.хим",
 }
 
