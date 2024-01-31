@@ -36,6 +36,8 @@ lessons = {
     "Geometry": "Геометрия",
     "Geography": "География",
     "Technology": "Технология",
+    "BioFizika": "БиоФизика",
+    "PrChem": "Пр.хим",
 }
 
 days_of_the_week = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday']

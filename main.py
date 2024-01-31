@@ -534,14 +534,112 @@ schedule = {
             },
             {
                 "time": TIME__LESSONS[1],
-                "lesson": LESSONS["Math"],
+                "lesson":  f"{LESSONS['English']} / {LESSONS['R_yaz']}",
             },
             {
                 "time": TIME__LESSONS[2],
+                "lesson":  f"{LESSONS['R_yaz']} / {LESSONS['English']}",
+            },
+            {
+                "time": TIME__LESSONS[3],
+                "lesson": LESSONS["Fizra"],
+            },
+            {
+                "time": TIME__LESSONS[4],
+                "lesson": LESSONS["Fizra"],
+            },
+            {
+                "time": TIME__LESSONS[5],
                 "lesson": LESSONS["Fizika"],
+            },
+            {
+                "time": TIME__LESSONS[6],
+                "lesson": LESSONS["Verstat"],
+            },
+            {
+                "time": TIME__LESSONS[7],
+                "lesson": LESSONS["R_lit"],
             },
         ],
         "Tuesday": [
+            {
+                "time": TIME__LESSONS[0],
+                "lesson": LESSONS["History"],
+            },
+            {
+                "time": TIME__LESSONS[1],
+                "lesson": LESSONS["Chemistry"],
+            },
+            {
+                "time": TIME__LESSONS[2],
+                "lesson": LESSONS["Society"],
+            },
+            {
+                "time": TIME__LESSONS[3],
+                "lesson": LESSONS["Geometry"],
+            },
+            {
+                "time": TIME__LESSONS[4],
+                "lesson": LESSONS["Algebra"],
+            },
+            {
+                "time": TIME__LESSONS[5],
+                "lesson": LESSONS["Russ"],
+            },
+            {
+                "time": TIME__LESSONS[6],
+                "lesson": LESSONS["Literature"],
+            },
+        ],
+        "Wednesday": [
+            {
+                "time": TIME__LESSONS[0],
+                "lesson": LESSONS["R_yaz"],
+            },
+            {
+                "time": TIME__LESSONS[1],
+                "lesson": LESSONS["English"],
+            },
+            {
+                "time": TIME__LESSONS[2],
+               "lesson": LESSONS["R_yaz"],
+            },
+            {
+                "time": TIME__LESSONS[3],
+               "lesson": LESSONS["English"],
+            },
+        ],
+        "Thursday": [
+            {
+                "time": TIME__LESSONS[0],
+                "lesson": LESSONS["OBZH"],
+            },
+            {
+                "time": TIME__LESSONS[1],
+                "lesson": LESSONS["Society"],
+            },
+            {
+                "time": TIME__LESSONS[2],
+                "lesson": LESSONS["History"],
+            },
+            {
+                "time": TIME__LESSONS[3],
+                "lesson": LESSONS["Algebra"],
+            },
+            {
+                "time": TIME__LESSONS[4],
+                "lesson": LESSONS["Bio"],
+            },
+            {
+                "time": TIME__LESSONS[5],
+                "lesson": LESSONS["Geography"],
+            },
+            {
+                "time": TIME__LESSONS[6],
+                "lesson": LESSONS["Fizika"],
+            },
+        ],
+        "Friday": [
             {
                 "time": TIME__LESSONS[0],
                 "lesson": LESSONS["Russ"],
@@ -552,143 +650,53 @@ schedule = {
             },
             {
                 "time": TIME__LESSONS[2],
-                "lesson": LESSONS["English"],
+                 "lesson": LESSONS["Chemistry"],
             },
             {
                 "time": TIME__LESSONS[3],
-                "lesson": LESSONS["History"],
+                "lesson": LESSONS["Ind_project"],
             },
             {
                 "time": TIME__LESSONS[4],
-                "lesson": LESSONS["Bio_fizika"],
-            },
-            {
-                "time": TIME__LESSONS[5],
                 "lesson": LESSONS["Bio"],
             },
             {
-                "time": TIME__LESSONS[6],
-                "lesson": LESSONS["Bio"],
-            },
-        ],
-        "Wednesday": [
-            {
-                "time": TIME__LESSONS[0],
-                "lesson": LESSONS["Chemistry"],
-            },
-            {
-                "time": TIME__LESSONS[1],
-                "lesson": LESSONS["Math"],
-            },
-            {
-                "time": TIME__LESSONS[2],
-               "lesson": LESSONS["Math"],
-            },
-            {
-                "time": TIME__LESSONS[3],
-               "lesson": LESSONS["History"],
-            },
-            {
-                "time": TIME__LESSONS[4],
-               "lesson": LESSONS["Literature"],
-            },
-            {
                 "time": TIME__LESSONS[5],
-                 "lesson": LESSONS["R_yaz"],
+               "lesson": LESSONS["BioFizika"],
             },
             {
                 "time": TIME__LESSONS[6],
-                "lesson": LESSONS["R_lit"],
-            },
-        ],
-        "Thursday": [
-            {
-                "time": TIME__LESSONS[0],
-                "lesson": LESSONS["English"],
-            },
-            {
-                "time": TIME__LESSONS[1],
-                "lesson": LESSONS["Math"],
-            },
-            {
-                "time": TIME__LESSONS[2],
-                "lesson": LESSONS["Bio"],
-            },
-            {
-                "time": TIME__LESSONS[3],
-                "lesson": LESSONS["Ecology"],
-            },
-            {
-                "time": TIME__LESSONS[4],
-                "lesson": LESSONS["OBZH"],
-            },
-            {
-                "time": TIME__LESSONS[5],
-                "lesson": LESSONS["Chemistry"],
-            },
-            {
-                "time": TIME__LESSONS[6],
-                "lesson": LESSONS["Chemistry"],
-            },
-        ],
-        "Friday": [
-            {
-                "time": TIME__LESSONS[0],
-                "lesson": LESSONS["Math"],
-            },
-            {
-                "time": TIME__LESSONS[1],
-                "lesson": LESSONS["Literature"],
-            },
-            {
-                "time": TIME__LESSONS[2],
-                 "lesson": LESSONS["Fizra"],
-            },
-            {
-                "time": TIME__LESSONS[3],
-                "lesson": LESSONS["Bio"],
-            },
-            {
-                "time": TIME__LESSONS[4],
-                "lesson": LESSONS["Chemistry"],
-            },
-            {
-                "time": TIME__LESSONS[5],
-               "lesson": LESSONS["Ind_project"],
-            },
-            {
-                "time": TIME__LESSONS[6],
-               "lesson": LESSONS["Astronomy"],
+               "lesson": LESSONS["Ecology"],
             },
         ],
         "Saturday": [
             {
                 "time": TIME__LESSONS[0],
-                "lesson": LESSONS["Math"],
-            },
-            {
-                "time": TIME__LESSONS[1],
-                "lesson":  f"{LESSONS['English']} / {LESSONS['Infa']}",
-            },
-            {
-                "time": TIME__LESSONS[2],
-                "lesson":  f"{LESSONS['English']} / {LESSONS['Infa']}",
-            },
-            {
-                "time": TIME__LESSONS[3],
                 "lesson": LESSONS["Chemistry"],
             },
             {
-                "time": TIME__LESSONS[4],
+                "time": TIME__LESSONS[1],
+                "lesson": LESSONS["Литература"],
+            },
+            {
+                "time": TIME__LESSONS[2],
                 "lesson": LESSONS["Bio"],
             },
             {
+                "time": TIME__LESSONS[3],
+                "lesson":  f"{LESSONS['English']} / {LESSONS['Infa']}",
+            },
+            {
+                "time": TIME__LESSONS[4],
+                "lesson":  f"{LESSONS['Infa']} / {LESSONS['English']}",
+            },
+            {
                 "time": TIME__LESSONS[5],
-                "lesson": LESSONS["Fizra"],
+                "lesson": LESSONS["Geometry"],
             },
             {
                 "time": TIME__LESSONS[6],
-                "lesson": LESSONS["Fizra"],
+                "lesson": LESSONS["PrChem"],
             },
         ],
     },
@@ -1662,7 +1670,7 @@ scheduler = BackgroundScheduler()
 scheduler.configure(timezone=timezone('Europe/Moscow'))
 
 # Расписание на будние дни
-scheduler.add_job(job_function, 'cron', day_of_week='mon-fri', hour=17, minute=10)
+scheduler.add_job(job_function, 'cron', day_of_week='mon-fri', hour=17, minute=37)
 # В этом примере, уведомление будет отправлено каждый будний день в 10:00 по московскому времени
 
 # Запуск планировщика
