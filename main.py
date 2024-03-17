@@ -676,7 +676,7 @@ schedule = {
             },
             {
                 "time": TIME__LESSONS[1],
-                "lesson": LESSONS["Литература"],
+                "lesson": LESSONS["Literature"],
             },
             {
                 "time": TIME__LESSONS[2],
@@ -1366,12 +1366,10 @@ schedule = {
     },
 }
 
-API_TG_KEY = os.getenv('API_KEY')
-
+API_TG_KEY = os.getenv('API')
+print(API_TG_KEY)
 bot = telebot.TeleBot(API_TG_KEY)
 print('start')
-
-
 '''
 @bot.message_handler(content_types=['text'])
 def get_text_messages(message):
@@ -1428,19 +1426,33 @@ def lister(message):
     cursor.execute('SELECT * FROM users')
     users = cursor.fetchall()
     info = ''
+    text = f'Вы изменили класс'
     for el in users:
         info += f'  \n Имя: {el[2]}, id: {el[1]}, ученик {el[3]} класса, уведомления{el[4]}'
     cursor.close()
     base.close()
     print(message.message.chat.id, 'this is chat id', message.from_user.id, 'this is user id')
-    bot.send_message(message.from_user.id, info)
+    bot.send_message(message.from_user.id, text)
 
 def managing_notifications(message):
     question = 'Настройка напоминаний'
     bot.send_message(message.from_user.id, text=question, reply_markup=inline_kb.reminder_keyboard())
    
 
-
+def checkUserInDB(message):
+    user_found = False
+    current_id = message.chat.id
+    base = sqlite3.connect('schedule_bot.db')
+    cursor = base.cursor()
+    cursor.execute('SELECT * FROM users')
+    users = cursor.fetchall()
+    for el in users:
+        if el[1] == current_id:  # current_id находится на второй позиции в кортеже
+            user_found = True
+            break
+    cursor.close()
+    base.close()
+    return user_found
 
 @bot.message_handler(commands=['start'])
 def start(message):
@@ -1473,8 +1485,13 @@ def show_timetable(message: types.Message):
             {TIME__LESSONS[7]} \n
         ''')
     elif message.text == 'Показать расписание 📅':
-        question = 'Выберите день недели'
-        bot.send_message(message.chat.id, text=question, reply_markup=inline_kb.choose_weekday_inline_keyboard())
+        isFound = checkUserInDB(message)
+        if (isFound == True):
+            question = 'Выберите день недели'
+            bot.send_message(message.chat.id, text=question, reply_markup=inline_kb.choose_weekday_inline_keyboard())
+        else:
+            choose_class(message)
+
 
     elif message.text == 'О школе 🎓':
         info = 'Муниципальное бюджетное общеобразовательное учреждение «Средняя общеобразовательная школа №27 с углубленным изучением отдельных предметов»Нижнекамского муниципального района Республики Татарстан'
@@ -1487,6 +1504,9 @@ def show_timetable(message: types.Message):
         print(chat_id, message_id)
         #bot.reply_to(message.chat.id, text=question,  reply_to_message_id=message.message_id, reply_markup=inline_kb.news_keyboard())
         bot.send_message(chat_id, text=question, reply_to_message_id=message_id,  reply_markup=inline_kb.settings_keyboard())
+
+    else:
+        start(message)
 
 def show_schedule(message):
     # Подключение к БД
@@ -1559,47 +1579,16 @@ def callback_worker(call):
 
     elif (call.data == 'tern_on'):
         tern_on_notification(call.from_user.id)
-        bot.send_message(call.from_user.id, text=f' Напоминания успешно {call.data} *ੈ♡⸝⸝🪐༘⋆')
+        bot.send_message(call.from_user.id, text=f' Напоминания успешно включены!')
 
     elif (call.data == 'tern_off'):
-       
-        bot.send_message(call.from_user.id, text=f' Напоминания успешно {call.data}')
-         # Подключение к БД
-        base = sqlite3.connect('schedule_bot.db')
-        cursor = base.cursor()
-        cursor.execute('SELECT * FROM users')
-        users = cursor.fetchall() 
-        for user in users:
-            chat_id = user[1]
-            if (user[4] == 1):
-                print('this user id', chat_id)
-                notification(chat_id)
-            '''
-        while True:
-            what = input('О че напомнить?')
-            if what == 'exit':
-                break
-            else:
-                t = input('How match sec?')
-                t = int(t) 
-                time.sleep(t)
-                telegram = get_notifier('telegram')
-                print('this user id', call.from_user.id)
-                telegram.notify(token='', chat_id=f'{call.from_user.id}', message=what)
-    '''
+        tern_off_notification(call.from_user.id)
+        bot.send_message(call.from_user.id, text=f' Напоминания успешно отключены!')
 
     else:
         choosen_class = call.data
         db_connect(call)
         lister(call)
-
-def notification(chat_id):
-    t = 10
-    what = 'Напоминаю, что завтра в школу'
-    t = int(t) 
-    time.sleep(t)
-    telegram = get_notifier('telegram')
-    telegram.notify(token=API_TG_KEY, chat_id=f'{chat_id}', message=what)
 
 def tern_on_notification(id):
     # Подключение к БД
@@ -1615,6 +1604,18 @@ def tern_on_notification(id):
     print(users)
     cursor.close()
     base.close()
+
+def tern_off_notification(id):
+    base = sqlite3.connect('schedule_bot.db') # Подключение к БД
+    cursor = base.cursor() # Выделяем область памяти
+    cursor.execute('SELECT * FROM users') # Выбираем поле Пользователи из БД
+    notifications = 0 
+    # Меняем значение notifications для пользователя с определенным tg_id
+    cursor.execute(f"UPDATE users SET notifications = {notifications} WHERE tg_id = ?", (id,))
+    base.commit() # Сохраняем изменения в БД
+    cursor.execute('SELECT * FROM users')
+    cursor.close() # Закрываем механизм обработки запроса
+    base.close() # Закрываем соединение с БД
 
 def job_function():
     # Подключение к БД
