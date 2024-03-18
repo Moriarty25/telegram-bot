@@ -24,11 +24,11 @@ schedule = {
         "Monday": [
             {
                 "time": TIME__LESSONS[0],
-                "lesson": LESSONS["Math"],
+                "lesson": LESSONS["ROV"],
             },
             {
                 "time": TIME__LESSONS[1],
-                "lesson": LESSONS["Fizika"],
+                "lesson": LESSONS["Math"],
             },
             {
                 "time": TIME__LESSONS[2],
@@ -40,7 +40,7 @@ schedule = {
             },
             {
                 "time": TIME__LESSONS[4],
-                "lesson": LESSONS["ROV"],
+                "lesson": LESSONS["OBZH"],
             },
             {
                 "time": TIME__LESSONS[5],
@@ -48,7 +48,7 @@ schedule = {
             },
             {
                 "time": TIME__LESSONS[6],
-                "lesson": LESSONS["OBZH"],
+                "lesson": LESSONS["Fizika"],
             }
         ],
         "Tuesday": [
@@ -100,11 +100,11 @@ schedule = {
             },
             {
                 "time": TIME__LESSONS[5],
-                "lesson": f"{LESSONS['Infa']} / {LESSONS['Fizra']}",
+                "lesson": f" {LESSONS['Fizra']}",
             },
             {
                 "time": TIME__LESSONS[6],
-                "lesson": f"{LESSONS['Infa']} / {LESSONS['Fizra']}",
+                "lesson": f" {LESSONS['Fizra']}",
             },
         ],
         "Thursday": [
